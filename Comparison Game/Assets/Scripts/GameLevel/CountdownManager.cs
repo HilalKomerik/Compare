@@ -11,6 +11,13 @@ public class CountdownManager : MonoBehaviour
 
     [SerializeField]
     private Text countdownText;
+
+    GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = Object.FindObjectOfType<GameManager>();
+    }
     void Start()
     {
        StartCoroutine(CountdownRoutine());
@@ -44,7 +51,9 @@ public class CountdownManager : MonoBehaviour
         countdownObject.GetComponent<RectTransform>().DOScale(0, 0.5f).SetEase(Ease.InBack);
         yield return new WaitForSeconds(0.6f);
 
-        Debug.Log("oyun baþladý");
+        StopAllCoroutines();
+
+        gameManager.StartGame();
     }
 
 }
