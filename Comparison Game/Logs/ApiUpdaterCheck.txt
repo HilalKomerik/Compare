@@ -8,3 +8,13 @@ C# parse time         : 412ms
 candidates check time : 50ms
 console write time    : 1ms
 
+[api-updater (non-obsolete-error-filter)] 9.05.2023 22:59:50 : Starting D:/Unity Oyun/2020.3.24f1/Editor/Data/Tools/ScriptUpdater/APIUpdater.NonObsoleteApiUpdaterDetector.exe
+[api-updater (non-obsolete-error-filter)] 
+----------------------------------
+jit/startup time      : 613,504ms
+moved types parse time: 111ms
+candidates parse time : 1ms
+C# parse time         : 426ms
+candidates check time : 59ms
+console write time    : 1ms
+
