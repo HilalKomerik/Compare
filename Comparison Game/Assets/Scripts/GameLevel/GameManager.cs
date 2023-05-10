@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     private GameObject pointDurationPanel;
 
     [SerializeField]
+    private GameObject pausePanel;
+
+    [SerializeField]
     private GameObject text,text1;
 
     [SerializeField]
@@ -55,7 +58,7 @@ public class GameManager : MonoBehaviour
         topRectangle.GetComponent<RectTransform>().DOLocalMoveX(0, 0.7f).SetEase(Ease.OutBack);
         lowerRectangle.GetComponent<RectTransform>().DOLocalMoveX(0, 0.7f).SetEase(Ease.OutBack);
 
-        StartGame(); // Deneme amaçlý kapattýk sonrdan aç
+        StartGame();
 
     }
 
@@ -69,7 +72,7 @@ public class GameManager : MonoBehaviour
 
         GameDifficulty();
 
-        //timerManager.StartTime();// Deneme amaçlý kapattýk sonrdan aç
+        timerManager.StartTime();
 
     }
 
@@ -321,5 +324,8 @@ public class GameManager : MonoBehaviour
         circlesManager.CircleScaleClose();
     }
 
-
+    public void PausePanelOpen()
+    {
+        pausePanel.SetActive(true);
+    }
 }
