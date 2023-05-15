@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     private Transform frame2;
     [SerializeField]
     private Transform button;
+
     void Start()
     {
         clock.transform.GetComponent<RectTransform>().DOLocalMoveX(85f, 1.5f).SetEase(Ease.OutBack);

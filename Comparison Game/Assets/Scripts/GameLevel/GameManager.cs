@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private GameObject pointDurationPanel;
 
     [SerializeField]
-    private GameObject pausePanel;
+    private GameObject pausePanel, endPanel;
 
     [SerializeField]
     private GameObject text,text1;
@@ -19,11 +19,12 @@ public class GameManager : MonoBehaviour
     private GameObject topRectangle, lowerRectangle;
 
     [SerializeField]
-    private Text topText, lowerText;
+    private Text topText, lowerText, scoreText;
 
     TimerManager timerManager;
     CirclesManager circlesManager;
     TrueFalseManager trueFalseManager;
+    EndManager endManager;
 
     int gameCounter, gameChallengesNumber;
 
@@ -33,19 +34,33 @@ public class GameManager : MonoBehaviour
 
     int buttonValue;
 
+    int totalScore, incrementScore;
+
+    int trueNumber, falseNumber;
+
+
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip trueSound,falseSound,gameEndingSound;
+
     private void Awake()
     {
         timerManager = Object.FindObjectOfType<TimerManager>();
         circlesManager = Object.FindObjectOfType<CirclesManager>();
         trueFalseManager = Object.FindObjectOfType<TrueFalseManager>();
+
+        audioSource = GetComponent<AudioSource>();
     }
     void Start()
     {
         gameChallengesNumber = 0;
         gameCounter = 0;
+        totalScore = 0;
 
         topText.text = "";
         lowerText.text = "";
+        scoreText.text = "0";
 
         UpdateStageScreen();
     }
@@ -64,6 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+
         text.GetComponent<CanvasGroup>().DOFade(0, 1f);
 
         text1.GetComponent<CanvasGroup>().DOFade(1, 1f);
@@ -81,26 +97,32 @@ public class GameManager : MonoBehaviour
         if (gameCounter<5)
         {
             gameChallengesNumber = 1;
+            incrementScore = 25;
         }
         else if (gameCounter>=5&& gameCounter<10)
         {
             gameChallengesNumber = 2;
+            incrementScore = 50;
         }
         else if (gameCounter >= 10 && gameCounter < 15)
         {
             gameChallengesNumber = 3;
+            incrementScore = 75;
         }
         else if (gameCounter >= 15 && gameCounter < 20)
         {
             gameChallengesNumber = 4;
+            incrementScore = 100;
         }
         else if (gameCounter >= 20 && gameCounter < 25)
         {
             gameChallengesNumber = 5;
+            incrementScore = 125;
         }
         else
         {
             gameChallengesNumber = Random.Range(1, 6);
+            incrementScore = 150;
         }
 
         switch (gameChallengesNumber)
@@ -302,12 +324,23 @@ public class GameManager : MonoBehaviour
             circlesManager.CircleScaleOpen(gameCounter % 5); // 5 daire olduðu için 5 mod aldýk.
             gameCounter++;
 
+            totalScore += incrementScore;
+
+            scoreText.text = totalScore.ToString();
+
+
+            trueNumber++;
+
+            audioSource.PlayOneShot(trueSound);
             GameDifficulty();
         }
         else
         {
             trueFalseManager.TrueFalseScaleOpen(false);
             ErrorCounterReduction();
+
+            falseNumber++;
+            audioSource.PlayOneShot(falseSound);
             GameDifficulty();
         }
     }
@@ -327,5 +360,16 @@ public class GameManager : MonoBehaviour
     public void PausePanelOpen()
     {
         pausePanel.SetActive(true);
+    }
+
+    public void FinishGame()
+    {
+
+        audioSource.PlayOneShot(gameEndingSound);
+        endPanel.SetActive(true);
+
+        endManager = Object.FindObjectOfType<EndManager>();
+
+        endManager.Results(trueNumber, falseNumber, totalScore);
     }
 }

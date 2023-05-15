@@ -10,9 +10,16 @@ public class TimerManager : MonoBehaviour
 
     int remainingTime;
     bool timeSituation;
+
+    GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = Object.FindObjectOfType<GameManager>();
+    }
     void Start()
     {
-        remainingTime = 90;
+        remainingTime = 10;
         timeSituation = true;
         
     }
@@ -35,6 +42,7 @@ public class TimerManager : MonoBehaviour
             {
                 timeSituation = false;
                 durationText.text = "00";
+                gameManager.FinishGame();
             }
 
             remainingTime--;
