@@ -7,4 +7,4 @@ Süre dolduğunda doğru sayısı skor ve yanlış değerler gösterilir.
 Oyun sırasında bekleme butonuna sahiptir. Oyun duraksatılır. Süre durdurulur .Oyuna devam et , Menüye dön ve çık butonları bulunmaktadır.
 Oyundan tamamen çıkma butonu orada bulunmaktadır.
 
-![Oyun resmi](https://github.com/HilalKomerik/PolygonRunnerExperiment/blob/master/OyunEkran%C4%B1.png)
+![Oyun resmi](Comparison Game/builds/Ana menü.png)
