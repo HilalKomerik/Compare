@@ -19,7 +19,7 @@ public class TimerManager : MonoBehaviour
     }
     void Start()
     {
-        remainingTime = 10;
+        remainingTime = 90;
         timeSituation = true;
         
     }

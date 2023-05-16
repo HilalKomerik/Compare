@@ -58,9 +58,9 @@ public class GameManager : MonoBehaviour
         gameCounter = 0;
         totalScore = 0;
 
-        topText.text = "";
-        lowerText.text = "";
-        scoreText.text = "0";
+        topText.text =" ";
+        lowerText.text =" ";
+        scoreText.text ="0";
 
         UpdateStageScreen();
     }
@@ -72,8 +72,6 @@ public class GameManager : MonoBehaviour
 
         topRectangle.GetComponent<RectTransform>().DOLocalMoveX(0, 0.7f).SetEase(Ease.OutBack);
         lowerRectangle.GetComponent<RectTransform>().DOLocalMoveX(0, 0.7f).SetEase(Ease.OutBack);
-
-        StartGame();
 
     }
 
