@@ -7,4 +7,5 @@ Süre dolduğunda doğru sayısı skor ve yanlış değerler gösterilir.
 Oyun sırasında bekleme butonuna sahiptir. Oyun duraksatılır. Süre durdurulur .Oyuna devam et , Menüye dön ve çık butonları bulunmaktadır.
 Oyundan tamamen çıkma butonu orada bulunmaktadır.
 
-![Oyun resmi](https://github.com/HilalKomerik/Compare/blob/master/Comparison%20Game/builds/Ana%20men%C3%BC.png)
+![Oyun resmi](https://github.com/HilalKomerik/Compare/blob/master/Comparison%20Game/builds/Oyun%20ekran%C4%B1.png)
+![Oyun resmi](https://github.com/HilalKomerik/Compare/blob/master/Comparison%20Game/builds/Bekleme%20ekran%C4%B1.png)
